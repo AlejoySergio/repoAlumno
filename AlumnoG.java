@@ -1,41 +1,26 @@
-package repoAlumno;
-
-import java.util.Random;
-
 public class AlumnoG {
-    // Atributos
-    private String nombre;
-    private String telefono;
-    private int edad;
-    private double[] notas = new double[3];
+    String nombre;
+    String telefono;
+    double n1, n2, n3;
+    double media; // Atributo para la media
 
-    // Constructor
-    public AlumnoG(String nombre, String telefono, int edad) {
+    public AlumnoG(String nombre, String telefono) {
         this.nombre = nombre;
         this.telefono = telefono;
-        this.edad = edad;
-        generarNotasAleatorias();
+        
+        // Generación de las 3 notas aleatorias (0.0 a 10.0)
+        this.n1 = Math.random() * 10;
+        this.n2 = Math.random() * 10;
+        this.n3 = Math.random() * 10;
+        
+        // Cálculo de la media
+        this.media = (n1 + n2 + n3) / 3;
     }
 
-    // Método para generar notas entre 0.0 y 10.0
-    private void generarNotasAleatorias() {
-        Random rand = new Random();
-        for (int i = 0; i < notas.length; i++) {
-            // Genera un decimal y lo redondea a un decimal
-            this.notas[i] = Math.round((rand.nextDouble() * 10) * 10.0) / 10.0;
-        }
-    }
-
-    // Método para mostrar los datos
-    public void mostrarInfo() {
-        System.out.println("--- Ficha del Alumno ---");
-        System.out.println("Nombre: " + nombre);
-        System.out.println("Teléfono: " + telefono);
-        System.out.println("Edad: " + edad);
-        System.out.print("Notas: ");
-        for (double nota : notas) {
-            System.out.print("[" + nota + "] ");
-        }
-        System.out.println("\n------------------------");
+    public void visualizar() {
+        System.out.println("Alumno: " + nombre + " | Tel: " + telefono);
+        System.out.printf("   Notas: [%.1f, %.1f, %.1f]\n", n1, n2, n3);
+        System.out.printf("   Media: %.2f\n", media);
+        System.out.println("------------------------------------------");
     }
 }
